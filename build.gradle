@@ -1,0 +1,79 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id 'maven-publish'
+}
+
+group = project.maven_group
+version = project.mod_version
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven {
+        name = 'babbaj-repo'
+        url = 'https://babbaj.github.io/maven/'
+    }
+    ivy {
+        name = 'BaritoneReleases'
+        url = 'https://github.com/cabaletta/baritone/releases/download/'
+        patternLayout {
+            artifact 'v[revision]/[artifact]-[revision].jar'
+        }
+        metadataSources {
+            artifact()
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.17.2'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.17.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
+    include 'com.fasterxml.jackson.core:jackson-core:2.17.2'
+    include 'com.fasterxml.jackson.core:jackson-annotations:2.17.2'
+    include 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
+
+    implementation 'dev.babbaj:nether-pathfinder:1.6'
+    include 'dev.babbaj:nether-pathfinder:1.6'
+
+    implementation 'baritone:baritone-unoptimized-fabric:1.20.0'
+    include 'baritone:baritone-unoptimized-fabric:1.20.0'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 25
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    from('LICENSE') {
+        rename { "${it}_${project.name}" }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
