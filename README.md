@@ -12,3 +12,10 @@ Keep your account active and managing tasks while you are away from your keyboar
 
 ### Oh No butttt Im lazzzyyy nooooo worrys Lilys here
 Need to construct a Netherite beacon in a fresh world without lifting a finger? Simple Lily can handle gathering, crafting, and building for you completely automatically.
+
+## Credits & Acknowledgments
+
+Simple Lily is built upon and incorporates code from the following awesome open-source projects:
+
+* **[Baritone](https://github.com/cabaletta/baritone)** — Used for pathfinding and movement automation.
+* **[Alto Clef](https://github.com/gaucho-matrero/altoclef)** — Provided the core bot architecture, original ideas, and task execution concepts.
