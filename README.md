@@ -17,5 +17,5 @@ Need to construct a Netherite beacon in a fresh world without lifting a finger? 
 
 Simple Lily is built upon and incorporates code from the following awesome open-source projects:
 
-* **[Baritone](https://github.com/cabaletta/baritone)** — Used for pathfinding and movement automation.
-* **[Alto Clef](https://github.com/gaucho-matrero/altoclef)** — Provided the core bot architecture, original ideas, and task execution concepts.
+* **[Baritone](https://github.com/cabaletta/baritone)** — Used for path-finding and movement automation.
+* **[Alto Clef](https://github.com/gaucho-matrero/altoclef)** — Original Idea and concept for this bot.
